@@ -5,5 +5,20 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /.*
+- url: /test
   script: crowdjockey.application
+- url: /img
+  static_dir: static/js
+- url: /js
+  static_dir: static/js
+- url: /style
+  static_dir: static/style
+- url: /lib/(.*)
+  static_files: static/lib/\1
+  upload: static/lib/(.*)
+- url: /helper.html
+  static_files: static/helper.html
+  upload: static/helper.html
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
