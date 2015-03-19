@@ -3,6 +3,11 @@
 
 function updatePlaylist() {
 	//console.log(JSON.stringify(Main.playlist, null, 2));
+	
+	if(Main.playlist.length > 6) {
+		Main.playlist.shift();
+	}
+	
 	$(".albumPlaylist").remove();
 	
 	Main.$playlist.innerHTML = "";
@@ -51,6 +56,25 @@ function updatePlaylist() {
       this.playlistTemplate = _.template(this.rawPlaylistTemplate);
 	  
 	  this.playlist = [];
+	  
+	  R.ready(function() {
+        if (R.authenticated()) {
+            $('.unauthenticated').hide();
+        } else {
+          $('.unauthenticated').show();
+          $('.authenticated').hide();
+          $('.auth').click(function() {
+			alert("Authenticating");
+            R.authenticate(function() {
+              if (R.authenticated()) {
+                $('.unauthenticated').hide();
+				$('.authenticated').show();
+                //self.start();
+              }
+            });
+          });
+        }
+      });
 
       if (Modernizr.touch) {
         self.$results
