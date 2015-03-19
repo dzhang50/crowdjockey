@@ -1,7 +1,41 @@
 /*globals R, Main, Modernizr, rdioUtils */
 
+
+function updatePlaylist() {
+	//console.log(JSON.stringify(Main.playlist, null, 2));
+	$(".albumPlaylist").remove();
+	
+	Main.$playlist.innerHTML = "";
+	
+    _.each(Main.playlist, function(album) {
+		var $el = $(Main.playlistTemplate(album))
+          .appendTo(Main.$playlist);
+        
+        var $cover = $el.find(".smallIcon");
+          $cover.hover(function() {
+            $el.addClass("hover");
+          }, function() {
+            $el.removeClass("hover");
+          });
+        
+		
+        $el.find(".play")
+          .click(function() {
+            R.player.play({source: album.key});
+          });
+		
+        $el.find(".delete")
+          .click(function() {
+			var idx = Main.playlist.indexOf(album);
+            Main.playlist.splice(idx, 1);
+			updatePlaylist();
+          });
+	});
+};
+
 (function() {
 
+	
   window.Main = {
     // ----------
     init: function() {
@@ -9,9 +43,14 @@
       
       this.$input = $(".search input");
       this.$results = $(".results");
+      this.$playlist = $(".playlist");
 
-      var rawTemplate = $.trim($("#album-template").text());
-      this.albumTemplate = _.template(rawTemplate);
+      this.rawTemplate = $.trim($("#album-template").text());
+      this.rawPlaylistTemplate = $.trim($("#playlist-template").text());
+      this.albumTemplate = _.template(this.rawTemplate);
+      this.playlistTemplate = _.template(this.rawPlaylistTemplate);
+	  
+	  this.playlist = [];
 
       if (Modernizr.touch) {
         self.$results
@@ -84,7 +123,7 @@
         R.request({
           method: "getTopCharts", 
           content: {
-            type: "Album"
+            type: "Track"
           },
           success: function(response) {
             self.showResults(response.result);
@@ -163,6 +202,14 @@
         $el.find(".play")
           .click(function() {
             R.player.play({source: album.key});
+          });
+		  
+        $el.find(".add")
+          .click(function() {
+			//addToPlaylist(album);
+            //R.player.play({source: album.key});
+			Main.playlist.push(album);
+			updatePlaylist();
           });
       });
     }

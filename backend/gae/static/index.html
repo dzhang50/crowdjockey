@@ -23,20 +23,42 @@
     <script src="js/main.js"></script>
     <script id="album-template" type="text/template">
       <span class="album">
+		<div class="large">
         <div class="icon" style="background-image: url(<%= icon %>)">
           <div class="buttons">
             <span class="play btn">Play</span>
+			<span class="add btn">Add to Playlist</span>
             <a href="http://localhost:8080/gen?title=<%= name %>&artist=<%= artist %>" target="_blank" class="site btn">Magic</a>
             <a href="http://www.rdio.com<%= url %>" target="_blank" class="site btn">View on Rdio.com</a>
             <a href="<%= appUrl %>" target="_blank" class="app btn">View in Rdio app</a>
-          </div>          
+          </div>
         </div>
         <div class="title albumLabel"><%= name %></div>
         <div class="artist albumLabel"><%= artist %></div>
+        <div class="key albumLabel"><%= key %></div>
+        </div>
+      </span>
+    </script>
+	<script id="playlist-template" type="text/template">
+      <span class="album albumPlaylist">
+		<div class="small">
+        <div class="smallIcon" style="background-image: url(<%= icon %>)">
+          <div class="buttons">
+            <span class="play btn">Play</span>
+            <span class="delete btn">Delete</span>
+            <a href="http://localhost:8080/gen?title=<%= name %>&artist=<%= artist %>" target="_blank" class="site btn">Magic</a>
+          </div>
+        </div>
+        <div class="title albumLabel"><%= name %></div>
+        <div class="artist albumLabel"><%= artist %></div>
+        <div class="key albumLabel"><%= key %></div>
+        </div>
       </span>
     </script>
   </head>
   <body>
+	<div class="row">
+	<div class="col-md-3">
     <div class="header">
       <div class="section">
         <img class="icon">
@@ -49,9 +71,14 @@
       <div class="section">
         <div class="track albumLabel">Not Playing</div>
         <div class="album-title albumLabel"></div>
-        <div class="artist ablumLabel"></div>
+        <div class="artist albumLabel"></div>
       </div>
     </div>
+	</div>
+	<div class="col-md-9">
+		<div class="playlist"></div>
+	</div>
+	</div>
     <form class="search">
       Enter an artist or track name: 
       <input type="text"/>

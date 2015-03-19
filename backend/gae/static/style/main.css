@@ -11,8 +11,8 @@
 }
 
 .header .icon {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
 
 .header button {
@@ -39,13 +39,31 @@
   display: inline-block;
   position: relative;
   margin: 0 20px 20px 0;
+  /*width: 200px;
+  height: 240px;*/
+}
+
+.album .large{
   width: 200px;
   height: 240px;
+}
+
+.album .small{
+  width: 150px;
+  height: 190px;
 }
 
 .album .icon {
   width: 200px;
   height: 200px;
+  margin: 0 0 4px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.album .smallIcon {
+  width: 150px;
+  height: 150px;
+  background-size: 150px 150px;
   margin: 0 0 4px 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
