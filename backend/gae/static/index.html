@@ -15,6 +15,11 @@
     <script src="lib/modernizr.touch.js"></script>
     <script src="lib/underscore-1.4.4.min.js"></script>
     <script src="lib/rdio-utils/rdio-utils.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <script src="js/main.js"></script>
     <script id="album-template" type="text/template">
       <span class="album">
@@ -26,8 +31,8 @@
             <a href="<%= appUrl %>" target="_blank" class="app btn">View in Rdio app</a>
           </div>          
         </div>
-        <div class="title label"><%= name %></div>
-        <div class="artist label"><%= artist %></div>
+        <div class="title albumLabel"><%= name %></div>
+        <div class="artist albumLabel"><%= artist %></div>
       </span>
     </script>
   </head>
@@ -37,14 +42,14 @@
         <img class="icon">
       </div>
       <div class="section">
-        <button class="play">play</button>
-        <button class="next">next</button>
-        <button class="prev">previous</button>
+        <button class="play">Play</button>
+        <button class="next">Next</button>
+        <button class="prev">Previous</button>
       </div>
       <div class="section">
-        <div class="track label">Not Playing</div>
-        <div class="album-title label"></div>
-        <div class="artist label"></div>
+        <div class="track albumLabel">Not Playing</div>
+        <div class="album-title albumLabel"></div>
+        <div class="artist ablumLabel"></div>
       </div>
     </div>
     <form class="search">

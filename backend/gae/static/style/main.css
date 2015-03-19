@@ -20,7 +20,7 @@
   margin: 0 0 10px 0;
 }
 
-.header .label {
+.header .albumLabel {
   margin: 0 0 10px 0;
 }
 
@@ -50,7 +50,7 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.album .label {
+.album .albumLabel {
   text-align: center;
   height: 1.3em;
   white-space: nowrap;
